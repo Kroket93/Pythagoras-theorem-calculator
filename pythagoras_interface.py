@@ -1,5 +1,6 @@
 from tkinter import *
 import math
+import sys
 
 running = True
 
@@ -19,6 +20,13 @@ window = Tk()
 window.title("Pythagoras' Theorem Calculator")
 c = StringVar()
 c.set("0")
+
+#def on_closing():
+#	window.destroy()
+#	sys.exit()
+
+#window.protocol("WM_DELETE_WINDOW", on_closing)
+
 
 errormessage = StringVar()
 errormessage.set(" ")
@@ -51,25 +59,27 @@ textentry_a.grid(row=7, column=0)
 textentry_b = Entry(window, width=20, bg="grey")
 textentry_b.grid(row=9, column=0)
 
-#result
-
 
 #run main loop
 
 while running:
-	
 
-	window.update_idletasks()
-	window.update()
+	try:
 
-	if len(textentry_a.get()) > 0 and len(textentry_b.get()) > 0:
-		try:
-			val_a = float(textentry_a.get())
-			val_b = float(textentry_b.get())
+		if len(textentry_a.get()) > 0 and len(textentry_b.get()) > 0:
+			try:
+				val_a = float(textentry_a.get())
+				val_b = float(textentry_b.get())
 
-			errormessage.set(" ")
-			hypotenuse = math.sqrt(float(textentry_a.get())**2 + float(textentry_b.get())**2)	
-			c.set(str(hypotenuse))
-		except ValueError:
-			errormessage.set("Please enter numbers only!")
-#window.mainloop()
+				errormessage.set(" ")
+				hypotenuse = math.sqrt(float(textentry_a.get())**2 + float(textentry_b.get())**2)	
+				c.set(str(hypotenuse))
+			except ValueError:
+				errormessage.set("Please enter numbers only!")
+
+
+
+		window.update_idletasks()
+		window.update()
+	except:
+		pass
