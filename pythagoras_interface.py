@@ -21,12 +21,6 @@ window.title("Pythagoras' Theorem Calculator")
 c = StringVar()
 c.set("0")
 
-#def on_closing():
-#	window.destroy()
-#	sys.exit()
-
-#window.protocol("WM_DELETE_WINDOW", on_closing)
-
 
 errormessage = StringVar()
 errormessage.set(" ")
